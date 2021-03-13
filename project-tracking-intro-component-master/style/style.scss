@@ -1,0 +1,294 @@
+// variables
+// =======================
+// ### Primary
+$Red: hsl(0, 100%, 68%);
+// ### Neutral
+// ========================
+$Very-Dark-Blue: hsl(230, 29%, 20%);
+$Dark-Grayish-Blue: hsl(230, 11%, 40%);
+$Grayish-Blue: hsl(231, 7%, 65%);
+$Light-Grayish-Blue: hsl(207, 33%, 95%);
+// ##font-family
+$font-family: 'Barlow',
+sans-serif;
+$font-family-condensed: 'Barlow Condensed',
+sans-serif;
+// Reset
+* {
+    font-family: $font-family-condensed;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+// ===========================
+// mixins
+@mixin flex-container($direction: row, $justify: space-between, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+//Mobile-first layout
+.project-container::before {
+    content: '';
+    border-radius: 0 0 0 25px;
+    background-color: $Light-Grayish-Blue;
+    width: 200px;
+    height: 420px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+header {
+    margin: 2.5rem 2rem;
+    @include flex-container();
+    position: relative;
+
+    .nav-button {
+        cursor: pointer;
+
+        .close {
+            display: none; //default
+        }
+    }
+
+    nav {
+        background-color: #fff;
+        box-shadow: 0px 4px 6px 2px rgba($color: #000000, $alpha: 0.3);
+        display: none;
+        margin-top: 1rem;
+        width: 100%;
+        text-align: center;
+        ul {
+            li {
+                margin: 1rem 0;
+                a {
+                    color: $Very-Dark-Blue;
+                    font-weight: 700;
+                }
+            }
+            li:hover {
+                text-decoration: underline;
+            }
+
+            li:nth-child(4) {
+                margin-top: 2rem;
+                position: relative;
+
+                a {
+                    color: $Dark-Grayish-Blue;
+                }
+            }
+            li:nth-child(4)::before {
+                content: '';
+                width: 90%;
+                height: 1px;
+                background-color: $Dark-Grayish-Blue;
+                position: absolute;
+                top: -1rem;
+                left: 15px;
+            }
+        }
+    }
+}
+//Mobile-nav trigger/toogle
+header.active {
+    .nav-button .open {
+        display: none;
+    }
+    .nav-button .close {
+        display: block;
+    }
+    nav {
+        display: block;
+        position: absolute;
+        top: 50px;
+        z-index: 1;       
+    }
+}
+// =========Content-Section==================
+.information-section {
+    @include flex-container($direction: column-reverse, $align: null);
+    overflow-x: hidden;
+}
+.illustration {
+    position: relative;
+    transform: translateX(4%);
+}
+.illustration img {
+    max-width: 130%;
+}
+.demo {
+    margin: 4rem 2rem 0;
+    font-family: $font-family;
+    color: $Grayish-Blue;
+    .header-text {
+        font-size: .8em;
+        letter-spacing: 3.5px;
+        margin-bottom: 1rem;
+        span {
+            background-color: $Very-Dark-Blue;
+            border-radius: 25px;
+            color: $Light-Grayish-Blue;
+            font-size: .8em;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            margin-right: .3rem;
+        }
+    }
+    h1 {
+        color: $Very-Dark-Blue;
+        font-size: 2.1em;
+        margin-bottom: 1rem;
+        line-height: 2rem;
+    }
+    .about {
+        width: 250px;
+        margin-bottom: 1.5rem;
+        font-size: 0.9em;
+        font-family: $font-family;
+        text-transform: none;
+    }
+}
+.cta-section {
+    .cta {
+        background-color: $Red;
+        border: none;
+        border-radius: 5px;
+        color: $Light-Grayish-Blue;
+        cursor: pointer;
+        font-size: .7em;
+        font-weight: 700;
+        padding: .4rem 1.2rem;
+        outline: none;
+    }
+    .cta:hover {
+        background-color: hsla(0, 100%, 68%, 0.8);
+    }
+    span {
+        margin-left: .5rem;
+        font-size: .8em;
+        letter-spacing: .5px;
+    }
+}
+// media queries
+@media screen and(min-width: 520px) {
+    .project-container::before {
+        width: 300px;
+        height: 500px;
+    }
+}
+@media screen and(min-width: 768px) {
+    .project-container::before {
+        width: 350px;
+        height: 650px;
+    }
+}
+
+@media screen and(min-width: 850px) {
+    .project-container::before {
+        border-radius: 0 0 0 50px;
+        width: 580px;
+        height: 350px;
+    }
+    header {
+        margin: 2.5rem 4rem;
+        @include flex-container();
+        .nav-button {
+            display: none;
+        }
+        nav {
+            background-color: unset;
+            box-shadow:none;
+            display: block;
+            margin-top: 0;
+            width: auto;
+            ul {
+                @include flex-container($align: center);
+                li {
+                    margin: 0 .75rem;
+                }
+                li:nth-child(4) {
+                    margin-top: 0;
+                    margin-left: 1.5rem;
+                }
+                li:nth-child(4)::before {
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 25px;
+                    top: 8px;
+                    left: -1.1rem;
+                    transform: translate(-50%, 20%);
+                }
+            }
+        }
+    }
+    // ======Content-Section======
+    .information-section {
+        @include flex-container($direction: row, $align: null);
+        margin-top: 4rem;
+        margin-left: 2rem;
+    }
+
+    .illustration {
+        transform: translateX(10%);
+    }
+
+    .illustration img {
+        max-width: 120%;
+    }
+    .demo {
+        margin: 4rem 2rem 0;
+        h1 {
+            font-size: 2.8em;
+            line-height: 2.8rem;
+        }
+        .about {
+            font-size: 1em;
+            width: 300px;
+        }
+    }
+    .cta-section {
+        .cta {
+            padding: .6rem 1.8rem;
+        }
+    }    
+}    
+@media screen and (min-width:1200px) {
+    .project-container::before {
+        width: 680px;
+        height: 350px;
+    }
+    header {
+        margin: 3rem 6rem;
+    }
+    header nav ul li {
+        margin: 0 1.5rem;
+    }
+    header nav ul li:nth-child(4) {
+        margin-top: 0;
+        margin-left: 3rem;
+    }
+    header nav ul li:nth-child(4)::before {
+        left: -100%;
+        transform: translate(-50%, 20%);
+    }
+    // =========================
+    .demo{
+        margin-left: 4rem;
+        h1 {
+            font-size: 3.5em;
+            width: 500px;
+        }
+    } 
+}

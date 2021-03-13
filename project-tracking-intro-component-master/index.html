@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Project tracking intro component</title>
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed:wght@400;700&display=swap"
+  rel="stylesheet">
+  <!-- custom styles -->
+  <link rel="stylesheet" href="./style/style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+      margin: 2rem 0 1rem;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="project-container">
+    <header>
+      <div class="logo">
+        <img src="./images/logo.svg" alt="logo">
+      </div>
+      <div class="nav-button">
+        <span class="open">
+          <img src="./images/icon-hamburger.svg" alt="ham-open">
+        </span>
+        <span class="close">
+          <img src="./images/icon-close.svg" alt="ham-close">
+        </span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="">Product</a></li>
+          <li><a href="">Features</a></li>
+          <li><a href="">Pricing</a></li>
+          <li><a href="">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="information-section">
+      <section class="demo">
+        <p class="header-text">
+          <span>New</span> Monograph Dashboard
+        </p>
+        <h1>
+          Powerful insights into your team
+        </h1>
+        <p class="about">Project planning and time tracking for agile teams</p>
+        <div class="cta-section">
+          <button class="cta">Schedule a demo</button>
+          <span>to see a live preview</span>
+        </div>
+      </section>
+      <section class="illustration">
+        <img src="./images/illustration-devices.svg" alt="illustration-devices">
+      </section>
+    </div>
+    <footer>
+      <p class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="#">Shivam</a>.
+      </p>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+  <script>
+    const navBtn = document.querySelector('.nav-button');
+    const headerNav = document.querySelector('header');
+
+    navBtn.addEventListener('click', (e) => {
+      headerNav.classList.toggle('active');
+    });
+    // ========Gsap=============
+    gsap.from(".logo", {duration: .5, 
+      opacity: 0, 
+      ease: "power2.out"});
+    gsap.from("nav", {duration: 1,
+    opacity: 0,
+    duration: 1, 
+    delay: .5,
+    ease: "power2.out"});
+    gsap.from(".demo", {duration: .5, 
+      opacity: 0,
+      x: '-500px', 
+      ease: "power2.out", 
+      delay: 1});
+    gsap.from(".illustration", {
+      opacity:0,
+      ease: "power2.out",
+      delay: 2,
+    });      
+    gsap.from(".attribution", {
+      opacity:0,
+      ease: "power2.out",
+      delay: 2.5,
+    });      
+  </script>
+</body>
+</html>
