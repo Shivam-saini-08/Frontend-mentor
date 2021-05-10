@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap');
+
+:root {
+    /* Card-body-colors */
+    --Bright-orange: hsl(31, 77%, 52%);
+    --Dark-cyan: hsl(184, 100%, 22%);
+    --Very-dark-cyan: hsl(179, 100%, 13%);
+
+     /* (paragraphs) */
+    --Transparen-white: hsla(0, 0%, 100%, 0.75);
+     /* (background, headings, buttons) */
+    --Very-light-gray: hsl(0, 0%, 95%);
+    --ff-Big-Shoulders : 'Big Shoulders Display',
+    cursive;
+    --ff-Lexend : 'Lexend Deca',
+    sans-serif;
+}
+
+body {
+    background-color: var(--Very-light-gray);
+}
+.orange{
+    background-color: var(--Bright-orange);
+}
+.dark-cyan {
+    background-color: var(--Dark-cyan);
+}
+.v-dark-cyan {
+    background-color: var(--Very-dark-cyan);
+}
+h1 {
+    color: var(--Very-light-gray);
+    font-family: var(--ff-Big-Shoulders);
+}    
+
+p {
+    color: var(--Transparen-white);
+    font-family: var(--ff-Lexend);
+}
+
+.btn-orange {
+    color: var(--Bright-orange);
+}
+
+.btn-cyan {
+    color: var(--Dark-cyan);
+}
+
+.btn-dark-cyan {
+    color: var(--Very-dark-cyan);
+}
+.btn-orange:hover,
+.btn-cyan:hover, 
+.btn-dark-cyan:hover {
+    color: var(--Very-light-gray);
+}    
